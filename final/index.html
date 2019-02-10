@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartArt</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script language="javascript" type="text/javascript" src="web3.min.js"></script>
+   
+    <script language="javascript" type="text/javascript" src="smartart.json"></script>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+   
+ 
+</head>
+<body>
+        <div class=" img_info flex-container">
+           <img class="m_img img-rounded" src="example.jpg" alt="">
+           
+           <ul></ul>  
+
+          
+            
+
+        </div>
+
+        <div id="txt"></div>
+        <script>
+           // web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+            function displaysuccess() {
+                smartArt.methods.buy(123456789, customerwallet).call()
+                .then(function(result) {                
+                {$("#txt").text("Succes! Lisence Id :" + result); }
+                
+                });
+                }
+            
+                 var smartArt;
+
+                function startApp() {
+                var smartArtAddress = 0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c; 
+                smartArt = new web3js.eth.Contract(smartArtABI, smartArtAddress);
+                }
+
+
+
+           var image = { name: "Beautiful Woman",
+                        author: "Van Gogh",
+                        price: 400,
+                        size: "250*250",
+                        hash: 123456789
+                     }
+
+            $(".flex-container").append(`<ul>
+                    <li><H3>${image.name}</H3></li>
+               <li><p>Author: ${image.author}</p></li>
+               <li> <p>Price: ${image.price}$</p></li>
+               <li><p>Size: ${image.size}</p></li>
+               <li><p><button onclick="displaysuccess()" class="button button2" id="demo">Buy</button></p></li>
+              </ul>`);
+
+
+              window.addEventListener('load', function() {
+                    if (typeof web3 !== 'undefined') {
+                    
+                    web3js = new Web3(web3.currentProvider);
+                    } else {
+                       
+                    
+                    }
+
+                      startApp()
+
+                    })
+          
+
+
+        </script>
+
+        
+</body>
+</html>
